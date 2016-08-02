@@ -1,0 +1,112 @@
+C51 COMPILER V9.00   LCD_1602                                                              07/30/2016 11:49:15 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE LCD_1602
+OBJECT MODULE PLACED IN Lcd_1602.OBJ
+COMPILER INVOKED BY: d:\Keil\C51\BIN\C51.EXE Lcd_1602.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include"Lcd_1602.h"
+   2          #include "Config.c"
+   3          
+   4          void  Delay_ms(INT16U t)
+   5          {
+   6   1              INT16U i,j;
+   7   1              for(i=0;i<t;i++)
+   8   1                      for(j=0;j<110;j++);
+   9   1      }
+  10          void Delay_us(INT16U t)
+  11          {
+  12   1              while(t--);
+  13   1      }
+  14          void Init_Lcd() //LCD 初始化
+  15          {
+  16   1              LCD_write_char(0x38,0);
+  17   1              Delay_ms(5);
+  18   1              LCD_write_char(0x38,0);
+  19   1              Delay_ms(5);
+  20   1              LCD_write_char(0x38,0);
+  21   1              Delay_ms(5);
+  22   1              LCD_write_char(0x0c,0);
+  23   1              Delay_ms(5);
+  24   1              LCD_write_char(0x06,0);
+  25   1              Delay_ms(5);
+  26   1              LCD_write_char(0x0c,0);
+  27   1              Delay_ms(5);
+  28   1      }
+  29          void LCD_write_str(INT8U x,INT8U Y,INT8U *s)
+  30          {
+  31   1              LCD_write_char(0,' ');
+  32   1              LCD_set_xy( x, Y ); //写地址
+  33   1              while (*s) // 写显示字符
+  34   1              {
+  35   2                      LCD_write_char( 0, *s );
+  36   2                      s ++;
+  37   2              }
+  38   1      }
+  39          
+  40          void LCD_set_xy( INT8U x,INT8U y ) //写地址函数
+  41          {
+  42   1          INT8U address;
+  43   1              if (y == 0) 
+  44   1                      address = 0x80 + x;
+  45   1              else
+  46   1                      address = 0xc0 + x;
+  47   1                      LCD_write_char( address, 0 );
+  48   1      }
+  49          
+  50          void LCD_en_write(void) //液晶使能
+  51          {
+  52   1              Delay_ms(5);
+  53   1              LCD_E=1;//EN=1
+  54   1              Delay_ms(5);
+  55   1              LCD_E=0;//EN=0
+C51 COMPILER V9.00   LCD_1602                                                              07/30/2016 11:49:15 PAGE 2   
+
+  56   1      }
+  57          void LCD_write_char(INT8U cd,INT8U ab) // 写数据
+  58          {
+  59   1              Delay_us(200);
+  60   1              if(cd==0)
+  61   1              {
+  62   2                      LCD_RS=1; //RS=1,写显示内容
+  63   2                      LCD_byte(ab);
+  64   2              }
+  65   1              else
+  66   1              {
+  67   2                      LCD_RS=0; //RS=0，写命令
+  68   2                      LCD_byte(cd);
+  69   2              }
+  70   1      }
+  71          
+  72          void LCD_byte(INT8U abc)
+  73          {
+  74   1              RW = 0;
+  75   1              LCD_E = 0;
+  76   1              LCD_DATA = abc;
+  77   1              LCD_en_write();
+  78   1      }
+  79          
+  80          LCD_value(INT8U x,INT8U y,FP32 f)
+  81          {
+  82   1              INT8U str[8]; //不能定义为 char* str，数组长度一定要大于浮点数的总位数
+  83   1              
+  84   1              sprintf(str,"%.1f",f); //1 表示小数位数 小数太多 自动四舍五入
+  85   1              LCD_write_str( x, y, str);
+  86   1              return 0;
+  87   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    277    ----
+   CONSTANT SIZE    =      5    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----      21
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

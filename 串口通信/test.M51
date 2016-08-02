@@ -1,0 +1,164 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        07/07/2016  17:48:59  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+D:\KEIL\C51\BIN\BL51.EXE test.obj TO test RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  test.obj (TEST)
+  D:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  test (TEST)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0001H     UNIT         ?DT?TEST
+            IDATA   0009H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     001CH     UNIT         ?PR?INIT?TEST
+                    001FH     0004H                  *** GAP ***
+            CODE    0023H     0003H     ABSOLUTE     
+            CODE    0026H     0036H     UNIT         ?PR?CHUANKOU?TEST
+            CODE    005CH     002AH     UNIT         ?PR?_DELAY?TEST
+            CODE    0086H     0014H     UNIT         ?PR?MAIN?TEST
+            CODE    009AH     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   test (TEST)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?TEST
+
+?PR?MAIN?TEST
+  +--> ?PR?INIT?TEST
+  +--> ?PR?_DELAY?TEST
+
+
+
+SYMBOL TABLE OF MODULE:  test (TEST)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        TEST
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/07/2016  17:48:59  PAGE 2
+
+
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  B:00A8H.7       PUBLIC        EA
+  D:00A8H         PUBLIC        IE
+  C:0060H         PUBLIC        _delay
+  B:00A8H.4       PUBLIC        ES
+  D:00B8H         PUBLIC        IP
+  B:0098H.0       PUBLIC        RI
+  B:0098H.1       PUBLIC        TI
+  C:0086H         PUBLIC        main
+  D:0099H         PUBLIC        SBUF
+  D:0098H         PUBLIC        SCON
+  D:0089H         PUBLIC        TMOD
+  D:0088H         PUBLIC        TCON
+  C:0003H         PUBLIC        init
+  B:00A8H.3       PUBLIC        ET1
+  D:008DH         PUBLIC        TH1
+  B:0098H.7       PUBLIC        SM0
+  B:0098H.6       PUBLIC        SM1
+  D:008BH         PUBLIC        TL1
+  B:0088H.6       PUBLIC        TR1
+  C:0026H         PUBLIC        chuankou
+  B:0098H.4       PUBLIC        REN
+  D:00C8H         PUBLIC        T2CON
+  D:0008H         PUBLIC        k
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          MAIN
+  C:0086H         LINE#         5
+  C:0086H         LINE#         6
+  C:0086H         LINE#         7
+  C:0089H         LINE#         8
+  C:0089H         LINE#         9
+  C:0089H         LINE#         10
+  C:008CH         LINE#         11
+  C:008FH         LINE#         12
+  C:0092H         LINE#         13
+  C:0095H         LINE#         14
+  C:0098H         LINE#         16
+  -------         ENDPROC       MAIN
+  -------         PROC          INIT
+  C:0003H         LINE#         18
+  C:0003H         LINE#         19
+  C:0003H         LINE#         20
+  C:0005H         LINE#         21
+  C:0007H         LINE#         22
+  C:0009H         LINE#         23
+  C:000BH         LINE#         24
+  C:000DH         LINE#         25
+  C:0010H         LINE#         26
+  C:0013H         LINE#         27
+  C:0016H         LINE#         28
+  C:0018H         LINE#         29
+  C:001AH         LINE#         30
+  C:001CH         LINE#         31
+  C:001EH         LINE#         32
+  -------         ENDPROC       INIT
+  -------         PROC          CHUANKOU
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/07/2016  17:48:59  PAGE 3
+
+
+  C:0026H         LINE#         33
+  C:002AH         LINE#         35
+  C:002DH         LINE#         36
+  C:002DH         LINE#         37
+  C:002FH         LINE#         38
+  C:0034H         LINE#         39
+  C:0037H         LINE#         40
+  C:003CH         LINE#         41
+  C:003FH         LINE#         42
+  C:0044H         LINE#         43
+  C:0047H         LINE#         44
+  C:004CH         LINE#         45
+  C:004FH         LINE#         46
+  C:0052H         LINE#         49
+  C:0052H         LINE#         50
+  C:0055H         LINE#         51
+  C:0055H         LINE#         52
+  C:0057H         LINE#         53
+  C:0057H         LINE#         55
+  -------         ENDPROC       CHUANKOU
+  C:005CH         SYMBOL        L?0022
+  -------         PROC          L?0021
+  -------         ENDPROC       L?0021
+  C:005CH         SYMBOL        L?0022
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        z
+  -------         DO            
+  D:0004H         SYMBOL        x
+  D:0002H         SYMBOL        y
+  -------         ENDDO         
+  C:0060H         LINE#         56
+  C:0060H         LINE#         57
+  C:0060H         LINE#         59
+  C:0070H         LINE#         60
+  C:0085H         LINE#         61
+  -------         ENDPROC       _DELAY
+  -------         ENDMOD        TEST
+
+Program Size: data=10.0 xdata=0 code=162
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

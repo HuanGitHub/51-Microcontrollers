@@ -1,0 +1,138 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        07/17/2016  20:46:53  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+D:\KEIL\C51\BIN\BL51.EXE main.obj TO PWM RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  main.obj (MAIN)
+  D:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  PWM (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0008H     UNIT         ?DT?MAIN
+            IDATA   0010H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     0008H                  *** GAP ***
+            CODE    000BH     0003H     ABSOLUTE     
+            CODE    000EH     005CH     UNIT         ?PR?TIME?MAIN
+            CODE    006AH     0017H     UNIT         ?PR?MAIN?MAIN
+            CODE    0081H     0010H     UNIT         ?PR?TIME0_CONFIG?MAIN
+            CODE    0091H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   PWM (MAIN)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?MAIN
+
+?PR?MAIN?MAIN
+  +--> ?PR?TIME0_CONFIG?MAIN
+
+
+
+SYMBOL TABLE OF MODULE:  PWM (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/17/2016  20:46:53  PAGE 2
+
+
+  B:00A8H.7       PUBLIC        EA
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  D:0008H         PUBLIC        flag
+  C:006AH         PUBLIC        main
+  C:000EH         PUBLIC        time
+  D:0098H         PUBLIC        SCON
+  D:0089H         PUBLIC        TMOD
+  D:0088H         PUBLIC        TCON
+  B:0080H.7       PUBLIC        led
+  D:000AH         PUBLIC        temp
+  D:000CH         PUBLIC        dc
+  B:0090H.0       PUBLIC        IN1
+  B:0090H.1       PUBLIC        IN2
+  B:00A8H.1       PUBLIC        ET0
+  B:0090H.2       PUBLIC        IN3
+  B:0090H.3       PUBLIC        IN4
+  D:008CH         PUBLIC        TH0
+  D:008AH         PUBLIC        TL0
+  B:0088H.4       PUBLIC        TR0
+  D:00C8H         PUBLIC        T2CON
+  D:000EH         PUBLIC        i
+  D:00D0H         PUBLIC        PSW
+  C:0081H         PUBLIC        Time0_Config
+  -------         PROC          MAIN
+  C:006AH         LINE#         10
+  C:006AH         LINE#         11
+  C:006AH         LINE#         12
+  C:006FH         LINE#         13
+  C:0071H         LINE#         14
+  C:0073H         LINE#         15
+  C:0075H         LINE#         16
+  C:0077H         LINE#         17
+  C:007CH         LINE#         18
+  C:007FH         LINE#         19
+  -------         ENDPROC       MAIN
+  -------         PROC          TIME0_CONFIG
+  C:0081H         LINE#         23
+  C:0081H         LINE#         24
+  C:0081H         LINE#         25
+  C:0084H         LINE#         26
+  C:0087H         LINE#         27
+  C:008AH         LINE#         28
+  C:008CH         LINE#         29
+  C:008EH         LINE#         30
+  C:0090H         LINE#         31
+  -------         ENDPROC       TIME0_CONFIG
+  -------         PROC          TIME
+  C:000EH         LINE#         32
+  C:0017H         LINE#         34
+  C:001AH         LINE#         35
+  C:001DH         LINE#         36
+  C:0025H         LINE#         37
+  C:0034H         LINE#         38
+  C:0036H         LINE#         40
+  C:0036H         LINE#         41
+  C:0047H         LINE#         42
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/17/2016  20:46:53  PAGE 3
+
+
+  C:0049H         LINE#         43
+  C:0049H         LINE#         44
+  C:0051H         LINE#         45
+  C:0055H         LINE#         46
+  C:0055H         LINE#         47
+  C:005DH         LINE#         48
+  C:0061H         LINE#         49
+  C:0063H         LINE#         50
+  C:0063H         LINE#         51
+  -------         ENDPROC       TIME
+  -------         ENDMOD        MAIN
+
+Program Size: data=17.0 xdata=0 code=149
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

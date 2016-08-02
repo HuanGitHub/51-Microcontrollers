@@ -1,0 +1,59 @@
+C51 COMPILER V9.00   PWM                                                                   07/23/2016 10:01:40 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE PWM
+OBJECT MODULE PLACED IN PWM.OBJ
+COMPILER INVOKED BY: d:\Keil\C51\BIN\C51.EXE PWM.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include "Config.c"
+   2          
+   3          void Time0_Config()
+   4          {
+   5   1              TMOD|=0X01;
+   6   1              TH0=0XFF;
+   7   1              TL0=0XFE;
+   8   1              EA=1;
+   9   1              ET0=1;
+  10   1              TR0=1;
+  11   1      }
+  12          void PWM_Left(int z)
+  13          {
+  14   1              if(temp<z)
+  15   1              {
+  16   2                      ENB=1;
+  17   2              }
+  18   1              if(temp>z)
+  19   1              {
+  20   2                      ENB=0;
+  21   2              }
+  22   1      
+  23   1      }
+  24          void PWM_Right(int z)
+  25          {
+  26   1              if(temp<z)
+  27   1              {
+  28   2                      ENA=1;
+  29   2              }
+  30   1              if(temp>z)
+  31   1              {
+  32   2                      ENA=0;
+  33   2              }
+  34   1      
+  35   1      }
+  36          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     86    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

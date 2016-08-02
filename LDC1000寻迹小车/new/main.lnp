@@ -1,0 +1,6 @@
+"Lcd_1602.obj",
+"ldc1000_51.obj",
+"main.obj",
+"Config.obj" 
+TO "main" 
+RAMSIZE(256) 

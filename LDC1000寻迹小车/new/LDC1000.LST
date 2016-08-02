@@ -1,0 +1,23 @@
+C51 COMPILER V9.00   LDC1000                                                               07/25/2016 11:50:30 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE LDC1000
+OBJECT MODULE PLACED IN LDC1000.OBJ
+COMPILER INVOKED BY: d:\Keil\C51\BIN\C51.EXE LDC1000.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   ----    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

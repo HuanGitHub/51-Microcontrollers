@@ -1,0 +1,4 @@
+"主.obj",
+"LCD.obj" 
+TO "双机通信" 
+RAMSIZE(256) 

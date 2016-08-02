@@ -1,0 +1,149 @@
+C51 COMPILER V9.00   LDC1000_51                                                            07/30/2016 11:44:56 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE LDC1000_51
+OBJECT MODULE PLACED IN ldc1000_51.OBJ
+COMPILER INVOKED BY: d:\Keil\C51\BIN\C51.EXE ldc1000_51.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include "ldc1000_51.h"                  
+   2          #include "Config.c"
+   3          uint16_t Rp_value;                                            
+   4          void write_spi(uint8_t add,uint8_t w_data)
+   5          {
+   6   1        uint8_t ss;
+   7   1        SCLK=0;  //SCLK=0;
+   8   1        CS=0; //CS=0
+   9   1        for(ss=0;ss<8;ss++)
+  10   1        {
+  11   2          SCLK=0;  //SCLK=0;
+  12   2          if((add&0x80)==0x80)
+  13   2          {
+  14   3            SDI=1; //SDI=1
+  15   3          }
+  16   2          else
+  17   2          {
+  18   3            SDI=0;//SDI=0
+  19   3          }
+  20   2          add=add<<1;
+  21   2          SCLK=1;   //sclk=1
+  22   2        }
+  23   1      
+  24   1        for(ss=0;ss<8;ss++)
+  25   1        {
+  26   2          SCLK=0;  //SCLK=0;
+  27   2          if((w_data&0x80)==0x80)
+  28   2           {
+  29   3             SDI=1; //SDI=1
+  30   3           }
+  31   2          else
+  32   2           {
+  33   3             SDI=0;//SDI=0
+  34   3           }
+  35   2          w_data=w_data<<1;
+  36   2          SCLK=1;   //sclk=1
+  37   2         }
+  38   1        SCLK=0;  //SCLK=0;
+  39   1        CS=1; //CS=1
+  40   1      
+  41   1      }
+  42          uint8_t read_spi(uint8_t add)                             
+  43          {
+  44   1        uint8_t ss;
+  45   1        uint8_t sss=0;
+  46   1        SCLK=0;  //SCLK=0;
+  47   1        CS=0; //CS=0
+  48   1        add=add|0x80;
+  49   1        for(ss=0;ss<8;ss++)
+  50   1        {
+  51   2          SCLK=0;  //SCLK=0;
+  52   2          if((add&0x80)==0x80)
+  53   2          {
+  54   3            SDI=1; //SDI=1
+  55   3          }
+C51 COMPILER V9.00   LDC1000_51                                                            07/30/2016 11:44:56 PAGE 2   
+
+  56   2          else
+  57   2          {
+  58   3            SDI=0;//SDI=0
+  59   3          }
+  60   2          add=add<<1;
+  61   2          SCLK=1;   //sclk=1
+  62   2        }
+  63   1      
+  64   1        for(ss=0;ss<8;ss++)
+  65   1        {
+  66   2          SCLK=0;  //SCLK=0;
+  67   2          sss=sss<<1;
+  68   2          if(SDO==1)  //sdo
+  69   2          {
+  70   3            sss=sss|0x01;
+  71   3          }
+  72   2          else
+  73   2          {
+  74   3            sss=sss&0xfe;
+  75   3          }
+  76   2          SCLK=1;//sclk=1
+  77   2        }
+  78   1        SCLK=0;  //SCLK=0;
+  79   1        CS=1; //CS=1
+  80   1        return sss;
+  81   1      }
+  82          
+  83          void ldc1000_int(void)
+  84          {
+  85   1        write_spi(LDC1000_CMD_RPMAX,       TEST_RPMAX_INIT);  
+  86   1        write_spi(LDC1000_CMD_RPMIN,       TEST_RPMIN_INIT);  
+  87   1        write_spi(LDC1000_CMD_SENSORFREQ,  0x94);             
+  88   1        write_spi(LDC1000_CMD_LDCCONFIG,   0x17);             
+  89   1        write_spi(LDC1000_CMD_CLKCONFIG,   0x00);            
+  90   1        write_spi(LDC1000_CMD_INTCONFIG,   0x02);             
+  91   1        write_spi(LDC1000_CMD_THRESHILSB,  0x50);              
+  92   1        write_spi(LDC1000_CMD_THRESHIMSB,  0x14);
+  93   1        write_spi(LDC1000_CMD_THRESLOLSB,  0xC0);             
+  94   1        write_spi(LDC1000_CMD_THRESLOMSB,  0x12);
+  95   1        write_spi(LDC1000_CMD_PWRCONFIG,   0x01);           
+  96   1      }
+  97          
+  98          
+  99          uint16_t Rp_Sample()                                      //¼ÆËã
+ 100          {
+ 101   1         uint8_t m,l;    //h
+ 102   1          CS=1;                                                       
+ 103   1          ldc1000_int();                 
+ 104   1          Init_Lcd();                                         
+ 105   1        l=read_spi(LDC1000_CMD_PROXLSB); 
+ 106   1        m=read_spi(LDC1000_CMD_PROXMSB);  
+ 107   1        Rp_value=m*256+l;
+ 108   1              return Rp_value;
+ 109   1      
+ 110   1      }
+ 111          
+ 112          
+ 113          void delay(uint16_t xx)
+ 114          {
+ 115   1        uint16_t xxx;
+ 116   1        for(xxx=0;xxx<xx;xxx++)
+ 117   1        {
+C51 COMPILER V9.00   LDC1000_51                                                            07/30/2016 11:44:56 PAGE 3   
+
+ 118   2         ;
+ 119   2        }
+ 120   1      }
+ 121          
+ 122          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    254    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

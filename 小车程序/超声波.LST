@@ -1,0 +1,72 @@
+C51 COMPILER V9.00   ³¬É_²¨                                                                07/23/2016 10:01:41 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE ³¬É_²¨
+OBJECT MODULE PLACED IN ³¬Éù²¨.OBJ
+COMPILER INVOKED BY: d:\Keil\C51\BIN\C51.EXE ³¬Éù²¨.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include "Config.c"
+   2          uint time,timeH,timeL;
+   3          uchar ch[]="0123456789";
+   4          void delay_20us()
+   5          { 
+   6   1          uchar a ;
+   7   1          for(a=0;a<100;a++);
+   8   1      }
+   9          void Chao_Time0_Config()
+  10          {
+  11   1              TMOD=0X11;
+  12   1              TH1=0;
+  13   1              TL1=0;
+  14   1              ET1=1;
+  15   1      }
+  16          int Count()
+  17          {
+  18   1              uint dist,bai,shi,ge;
+  19   1              Write_com(0x01);
+  20   1              time=TH0*256+TL0;
+  21   1              dist=time*0.019;
+  22   1          bai=dist/100;
+  23   1          shi=dist%100/10;
+  24   1          ge=dist%100%10;
+  25   1              Write_dat(ch[bai]);
+  26   1          Write_dat(ch[shi]);
+  27   1              Write_dat(ch[ge]);
+  28   1              TH1=0;
+  29   1              TL1=0;
+  30   1              return dist;
+  31   1      }
+  32          void Delay250ms()               //@11.0592MHz
+  33          {
+  34   1              uchar i, j, k;
+  35   1              _nop_();
+  36   1              _nop_();
+  37   1              i = 11;
+  38   1              j = 130;
+  39   1              k = 111;
+  40   1              do
+  41   1              {
+  42   2                      do
+  43   2                      {
+  44   3                              while (--k);
+  45   3                      } while (--j);
+  46   2              } while (--i);
+  47   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    185    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     17       6
+C51 COMPILER V9.00   ³¬É_²¨                                                                07/23/2016 10:01:41 PAGE 2   
+
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

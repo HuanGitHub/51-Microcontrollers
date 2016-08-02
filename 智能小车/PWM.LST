@@ -1,0 +1,100 @@
+C51 COMPILER V9.00   PWM                                                                   07/25/2016 16:32:12 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE PWM
+OBJECT MODULE PLACED IN PWM.OBJ
+COMPILER INVOKED BY: d:\Keil\C51\BIN\C51.EXE PWM.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include "Config.c"
+   2          #include "PWM.h"
+   3          #include "L298N.h"
+   4          void PWM_Time1_Config()
+   5          {
+   6   1              TMOD|=0X10;
+   7   1              TH1=0XFF;
+   8   1              TL1=0XFE;
+   9   1              EA|=1;
+  10   1              ET1=1;
+  11   1              TR1=1;
+  12   1              ENA=1;
+  13   1              ENB=1;   
+  14   1      }
+  15          void PWM_Left(int y,int z)
+  16          {
+  17   1              if(y<z)
+  18   1              {
+  19   2                      ENB=1;
+  20   2              }
+  21   1              if(y>z)
+  22   1              {
+  23   2                      ENB=0;
+  24   2              }
+  25   1      }
+  26          void PWM_Right(int y,int z)
+  27          {
+  28   1              if(y<z)
+  29   1              {
+  30   2                      ENA=1;
+  31   2              }
+  32   1              if(y>z)
+  33   1              {
+  34   2                      ENA=0;
+  35   2              }
+  36   1      }
+  37          void PWM_test()
+  38          {       Go();
+  39   1              PWM_Time1_Config();     
+  40   1      }
+  41          void PWM_time1()
+  42          {
+  43   1              static int ti;
+  44   1              TH1=0XFF;
+  45   1              TL1=0XFE;
+  46   1              if(PWM_flag!=0){
+  47   2                      PWM_flag>0?PWM_Left(ti,20):PWM_Right(ti,20);  //当PWM_flag不为0  >0为Left <0为Right；
+  48   2              }else{
+  49   2                      ENA=1;ENB=1;
+  50   2              }  
+  51   1              ti++;
+  52   1              if(ti==200){
+  53   2                      ti=0;
+  54   2              }       
+  55   1      }
+C51 COMPILER V9.00   PWM                                                                   07/25/2016 16:32:12 PAGE 2   
+
+  56          void PWM_Low(int y,int z)
+  57          {
+  58   1              if(y<z)
+  59   1              {
+  60   2                      ENB=1;
+  61   2              }
+  62   1              if(y>z)
+  63   1              {
+  64   2                      ENB=0;
+  65   2              }
+  66   1              if(y<z)
+  67   1              {
+  68   2                      ENA=1;
+  69   2              }
+  70   1              if(y>z)
+  71   1              {
+  72   2                      ENA=0;
+  73   2              }
+  74   1      
+  75   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    215    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

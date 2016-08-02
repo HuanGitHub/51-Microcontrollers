@@ -1,0 +1,51 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        07/04/2016  14:28:02  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+D:\KEIL\C51\BIN\BL51.EXE ch375.obj TO ch375 RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  ch375.obj (CH375)
+
+
+LINK MAP OF MODULE:  ch375 (CH375)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+
+
+OVERLAY MAP OF MODULE:   ch375 (CH375)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+
+
+SYMBOL TABLE OF MODULE:  ch375 (CH375)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        CH375
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  D:00C8H         PUBLIC        T2CON
+  D:00D0H         PUBLIC        PSW
+  -------         ENDMOD        CH375
+
+*** WARNING L10: CANNOT DETERMINE ROOT SEGMENT
+
+Program Size: data=0.0 xdata=0 code=0
+LINK/LOCATE RUN COMPLETE.  1 WARNING(S),  0 ERROR(S)

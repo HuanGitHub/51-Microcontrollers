@@ -1,0 +1,37 @@
+C51 COMPILER V9.00   LIANG                                                                 07/16/2016 07:47:45 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE LIANG
+OBJECT MODULE PLACED IN liang.OBJ
+COMPILER INVOKED BY: d:\Keil\C51\BIN\C51.EXE liang.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #ifndef L298N.c                    
+*** WARNING C323 IN LINE 1 OF liang.c: newline expected, extra characters found
+   2          #define L298N.c
+   3          #endif
+   4          
+   5          #ifndef Config.c
+*** WARNING C323 IN LINE 5 OF liang.c: newline expected, extra characters found
+   6          #define Config.c
+   7          #endif
+   8          
+   9          #ifndef PWM.c
+*** WARNING C323 IN LINE 9 OF liang.c: newline expected, extra characters found
+  10          #define PWM.c
+  11          #endif
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   ----    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  3 WARNING(S),  0 ERROR(S)

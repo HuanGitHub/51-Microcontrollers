@@ -1,0 +1,78 @@
+C51 COMPILER V9.00   LCD                                                                   07/25/2016 16:32:12 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE LCD
+OBJECT MODULE PLACED IN LCD.OBJ
+COMPILER INVOKED BY: d:\Keil\C51\BIN\C51.EXE LCD.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include "Config.c"
+   2          #include "LCD.h"
+   3          
+   4          void LCD_Delay()
+   5          {
+   6   1              int x,y;
+   7   1              for(x=0;x<10;x++)
+   8   1                      for(y=0;y<200;y++);
+   9   1      }
+  10          void Write_com(char x)
+  11          {
+  12   1              LCD_rs=0;
+  13   1              LCD_rw=0;
+  14   1              LCD_e=0;
+  15   1              LCD_Delay();
+  16   1              P0=x;
+  17   1              LCD_e=1;
+  18   1              LCD_Delay();
+  19   1              LCD_e=0;
+  20   1      }
+  21          void Write_dat(char x)
+  22          {
+  23   1              LCD_rs=1;
+  24   1              LCD_rw=0;
+  25   1              LCD_e=0;
+  26   1              LCD_Delay();
+  27   1              P0=x;
+  28   1              LCD_e=1;
+  29   1              LCD_Delay();
+  30   1              LCD_e=0;
+  31   1      
+  32   1      }
+  33          void LCD_init()
+  34          {
+  35   1              LCD_rs=0;
+  36   1              LCD_rw=0;
+  37   1              LCD_e=0;
+  38   1          Write_com(0x38);
+  39   1              Write_com(0x0e);
+  40   1              Write_com(0x06);
+  41   1              Write_com(0x01);
+  42   1      }
+  43          void LCD_test()
+  44          {       char ch[]="LCD_test success";
+  45   1              int i;
+  46   1                      LCD_init();
+  47   1              
+  48   1              for(i=0;i<16;i++)
+  49   1              {
+  50   2                      Write_dat(ch[i]);
+  51   2              }
+  52   1              while(1);
+  53   1      }
+
+
+C51 COMPILER V9.00   LCD                                                                   07/25/2016 16:32:12 PAGE 2   
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    133    ----
+   CONSTANT SIZE    =     17    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----      17
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

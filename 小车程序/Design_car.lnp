@@ -1,0 +1,10 @@
+"Config.obj",
+"L298N.obj",
+"main.obj",
+"PWM.obj",
+"DS1302.obj",
+"≥¨…˘≤®.obj",
+"Œ Ã‚.obj",
+"Red_Line.obj" 
+TO "Design_car" 
+RAMSIZE(256) 

@@ -1,0 +1,153 @@
+C51 COMPILER V9.00   MAIN                                                                  07/30/2016 11:44:56 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: d:\Keil\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <reg52.h>
+   2          #include "Lcd_1602.h"
+   3          #include "ldc1000_51.h"
+   4          #include "Config.c"                     //主机
+   5          void Port_init();
+   6          void Speed_IN1();
+   7          void Time1_init();
+   8          int sp,Sdata,bb;
+   9          void DE(int z);
+  10          unsigned int va,va1,va2;
+  11          void main()
+  12          {       
+  13   1              ldc1000_int();
+  14   1              Port_init();
+  15   1              Init_Lcd();
+  16   1              //Speed_IN1();
+  17   1              //Time1_init();
+  18   1              PT0=1;
+  19   1              while(1)
+  20   1              {
+  21   2                      Sdata=Rp_Sample();
+  22   2                      va=Sdata;
+  23   2                      DE(1);
+  24   2                      Sdata=Rp_Sample();
+  25   2                      va1=Sdata;
+  26   2                      va2=va1-va;
+  27   2                      LCD_value(0,0,va);
+  28   2                      if(va>1000){
+  29   3                              DE(200);
+  30   3                              SBUF=2;
+  31   3                      }else{
+  32   3                                      DE(200);        DE(200);        DE(200);        DE(200);
+  33   3                              SBUF=0;
+  34   3                      }
+  35   2                      
+  36   2                      
+  37   2              }
+  38   1      }
+  39          void DE(int z)
+  40          {
+  41   1              int x,y;
+  42   1              for(x=0;x<z;x++)
+  43   1                      for(y=0;y<150;y++);
+  44   1      }
+  45          
+  46          
+  47          void Port_init()
+  48          {
+  49   1              SM0=0;
+  50   1              SM1=1;
+  51   1              REN=1;
+  52   1              TI=0;
+  53   1              RI=0;
+  54   1              TMOD=0X20;
+  55   1              TH1=0Xfd;
+C51 COMPILER V9.00   MAIN                                                                  07/30/2016 11:44:56 PAGE 2   
+
+  56   1              TL1=0Xfd;
+  57   1              ET1=0;
+  58   1              TR1=1;
+  59   1              EA=1;
+  60   1              ES=1;
+  61   1      }
+  62          void Trans() interrupt 4
+  63          {
+  64   1        if(RI)                                        //接收结束 标志符
+  65   1        {  //接收的SBUF
+  66   2                RI=0;                            //接收的SBUF 
+  67   2        }
+  68   1        if(TI)                                 //发送结束表示符号
+  69   1        {     
+  70   2              TI=0;
+  71   2        }
+  72   1      }
+  73          void Speed_IN1()
+  74          {
+  75   1              EX1=1;
+  76   1              EA=1;
+  77   1              IT1=1;
+  78   1      }
+  79          void Speed() interrupt 2
+  80          {
+  81   1              sp++;
+  82   1      //      LCD_write_str(0,0,"Distances:");
+  83   1              //LCD_value(10,0,sp);
+  84   1      }
+  85          
+  86          void Time1() interrupt 1
+  87          {         
+  88   1              
+  89   1              int time,ttt,tt;
+  90   1              TR0=0;
+  91   1              
+  92   1                      //De(1);
+  93   1              time++; 
+  94   1              TH0=0X00;
+  95   1              TL0=0X4C;
+  96   1              if(time==20){
+  97   2                      time=0;
+  98   2                      ttt++;
+  99   2                      if(tt==0){
+ 100   3                              LCD_value0(1,1,0);
+ 101   3                      }
+ 102   2                      LCD_value0(3,1,ttt);
+ 103   2                      LCD_write_str(2,1,":");
+ 104   2                      if(ttt==60){
+ 105   3                                ttt=0;
+ 106   3                                tt++;
+ 107   3                                LCD_value0(1,1,tt);
+ 108   3                                if(tt==10){
+ 109   4                                              tt=0;
+ 110   4                                      }                 
+ 111   3                      }
+ 112   2              }
+ 113   1              TR0=1;
+ 114   1              
+ 115   1      }
+ 116          void Time1_init()
+ 117          {
+C51 COMPILER V9.00   MAIN                                                                  07/30/2016 11:44:56 PAGE 3   
+
+ 118   1              TMOD|=0X01;
+ 119   1              TH0=0X00;
+ 120   1              TL0=0X4C;
+ 121   1              ET0=1;
+ 122   1              TR0=1;
+ 123   1              EA=1;
+ 124   1      
+ 125   1      
+ 126   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    437    ----
+   CONSTANT SIZE    =      2    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     12       6
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

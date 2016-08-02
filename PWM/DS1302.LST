@@ -1,0 +1,98 @@
+C51 COMPILER V9.00   DS1302                                                                07/18/2016 07:14:52 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE DS1302
+OBJECT MODULE PLACED IN DS1302.OBJ
+COMPILER INVOKED BY: d:\Keil\C51\BIN\C51.EXE DS1302.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <reg52.h>
+   2          #ifndef uint
+   3          #define uint unsigned int
+   4          #endif
+   5          #ifndef uchar
+   6          #define uchar unsigned char
+   7          #endif
+   8          void Lcd_Write_com(uint x);
+   9          void Lcd_Write_data(uchar da);
+  10          void delay(uint z);
+  11          void Lcd_init();
+  12          sbit rs=P2^6;
+  13          sbit rw=P2^5;
+  14          sbit lecde=P2^7;
+  15          void delay(uint z)
+  16          {
+  17   1              uint x,y;
+  18   1              for(x=z;x>0;x--)
+  19   1                      for(y=110;y>0;y--);
+  20   1      }
+  21          
+  22          void Lcd_Write_com(uint x)
+  23          {
+  24   1              rs=0;
+  25   1              rw=0;
+  26   1              P0=x;
+  27   1              delay(1);
+  28   1              lecde=1;
+  29   1              delay(1);
+  30   1              lecde=0;
+  31   1      }
+  32          
+  33          void Lcd_Write_data(uchar da)
+  34          {
+  35   1              rs=1;
+  36   1              rw=0;
+  37   1              delay(1);
+  38   1              P0=da;
+  39   1              lecde=1;
+  40   1              delay(1);
+  41   1              lecde=0;        
+  42   1      }
+  43          
+  44          void Lcd_init()
+  45          {
+  46   1              Lcd_Write_com(0x38);
+  47   1              delay(1);
+  48   1              Lcd_Write_com(0x0F);
+  49   1              delay(1);
+  50   1              Lcd_Write_com(0x01);
+  51   1              delay(1);
+  52   1              Lcd_Write_com(0x06);
+  53   1              delay(1);
+  54   1              Lcd_Write_com(0x80);
+  55   1              delay(1);
+C51 COMPILER V9.00   DS1302                                                                07/18/2016 07:14:52 PAGE 2   
+
+  56   1              Lcd_Write_com(0x01);
+  57   1              delay(1);
+  58   1      }
+  59          void main()
+  60          {
+  61   1               Lcd_init();
+  62   1      
+  63   1              Lcd_Write_com(0x80+0X40);
+  64   1              Lcd_Write_data('0');                            // ±
+  65   1              Lcd_Write_data('0');                             
+  66   1              Lcd_Write_data('-');
+  67   1              Lcd_Write_data('0');                            //∑÷
+  68   1              Lcd_Write_data('0');    
+  69   1              Lcd_Write_data('-');
+  70   1              Lcd_Write_data('0');                            //√Î
+  71   1              Lcd_Write_data('0');
+  72   1      
+  73   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    152    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,43 @@
+C51 COMPILER V9.00   CONFIG                                                                07/30/2016 11:49:16 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE CONFIG
+OBJECT MODULE PLACED IN Config.OBJ
+COMPILER INVOKED BY: d:\Keil\C51\BIN\C51.EXE Config.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <reg52.h>
+   2          /* L298N */
+   3          sbit IN1=P2^0;
+   4          sbit IN2=P2^1;
+   5          sbit IN3=P2^2;
+   6          sbit IN4=P2^3;
+   7          /* PWM */
+   8          
+   9          sbit ENA=P2^4;
+  10          sbit ENB=P3^7;
+  11          /* LDC1000 */
+  12          sbit SDO =P1^1;     
+  13          sbit SDI =P1^2;   
+  14          sbit SCLK =P1^0;  
+  15          sbit CS =P1^3;  
+  16          
+  17          /* LCD */
+  18          sbit LCD_RS = P2^6; //1602 control define
+  19          sbit RW = P2^5;
+  20          sbit LCD_E = P2^7;
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   ----    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

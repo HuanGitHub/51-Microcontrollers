@@ -1,0 +1,10 @@
+"Config.obj",
+"Controller.obj",
+"L298N.obj",
+"LCD.obj",
+"Main.obj",
+"PWM.obj",
+"Steering_engine.obj",
+"Ultrasound.obj" 
+TO "ÖÇÄÜÐ¡³µ" 
+RAMSIZE(256) 

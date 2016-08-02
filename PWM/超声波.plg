@@ -1,0 +1,47 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+D:\doc\PWM\³¬Éù²¨.uvproj
+Project File Date:  07/18/2016
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling ³¬Éù²¨.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?DELAY_20US?³¬É_²¨
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?TIME1_CONFIG?³¬É_²¨
+*** WARNING L15: MULTIPLE CALL TO SEGMENT
+    SEGMENT: ?PR?_WRITE_DAT?³¬É_²¨
+    CALLER1: ?PR?TIME1?³¬É_²¨
+    CALLER2: ?C_C51STARTUP
+Program Size: data=36.0 xdata=0 code=363
+creating hex file from "³¬Éù²¨"...
+"³¬Éù²¨" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling ³¬Éù²¨.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?DELAY_20US?³¬É_²¨
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?TIME1_CONFIG?³¬É_²¨
+*** WARNING L15: MULTIPLE CALL TO SEGMENT
+    SEGMENT: ?PR?_WRITE_DAT?³¬É_²¨
+    CALLER1: ?PR?TIME1?³¬É_²¨
+    CALLER2: ?C_C51STARTUP
+Program Size: data=36.0 xdata=0 code=363
+creating hex file from "³¬Éù²¨"...
+"³¬Éù²¨" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling ³¬Éù²¨.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?DELAY_20US?³¬É_²¨
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?TIME1_CONFIG?³¬É_²¨
+Program Size: data=36.0 xdata=0 code=358
+creating hex file from "³¬Éù²¨"...
+"³¬Éù²¨" - 0 Error(s), 2 Warning(s).

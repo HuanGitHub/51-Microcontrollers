@@ -1,0 +1,85 @@
+C51 COMPILER V9.00   TEST                                                                  07/04/2016 16:43:06 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE TEST
+OBJECT MODULE PLACED IN test.OBJ
+COMPILER INVOKED BY: d:\Keil\C51\BIN\C51.EXE test.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <reg52.h>
+   2          sbit CH_WR=P1^0;
+   3          sbit CH_RD=P1^1;
+   4          sbit CH_CS=P1^2;
+   5          sbit CH_A0=P1^3;
+   6          sbit CH_INT=P1^4;
+   7          void Delay(int z);
+   8          void CH_Write_Com();
+   9          void writecom();
+  10          
+  11          void CH_Write_dat();
+  12          void main()
+  13          {
+  14   1              CH_Write_Com();
+  15   1              CH_Write_dat();
+  16   1              while(1);
+  17   1      }
+  18          void CH_Write_Com()
+  19          {
+  20   1      
+  21   1              CH_CS=0;
+  22   1              P0=0X15;
+  23   1              CH_RD=1;
+  24   1              CH_WR=1;
+  25   1              CH_A0=0;
+  26   1              CH_A0=1;
+  27   1              CH_WR=0;
+  28   1              CH_WR=1;
+  29   1              CH_A0=0;
+  30   1              CH_CS=1;
+  31   1              P0=0XFF;
+  32   1      
+  33   1      
+  34   1      }
+  35          void Delay(int z)
+  36          {
+  37   1              int x,y;
+  38   1              for(x=0;x<z;x++)
+  39   1                      for(y=0;y<200;y++);
+  40   1              
+  41   1      }
+  42          
+  43          void CH_Write_dat()
+  44          {
+  45   1      
+  46   1              CH_CS=0;
+  47   1              CH_A0=0;
+  48   1              P0=0x02;
+  49   1              CH_WR=1;
+  50   1              CH_WR=0;
+  51   1              CH_WR=1;
+  52   1              CH_CS=1;
+  53   1              P0=0XFF;
+  54   1      
+  55   1      
+C51 COMPILER V9.00   TEST                                                                  07/04/2016 16:43:06 PAGE 2   
+
+  56   1      
+  57   1              
+  58   1      
+  59   1      
+  60   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     90    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

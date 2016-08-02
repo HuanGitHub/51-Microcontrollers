@@ -1,0 +1,49 @@
+C51 COMPILER V9.00   RED_LINE                                                              07/23/2016 10:01:41 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE RED_LINE
+OBJECT MODULE PLACED IN Red_Line.OBJ
+COMPILER INVOKED BY: d:\Keil\C51\BIN\C51.EXE Red_Line.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include "Config.c"
+   2          void Delay500ms()               //@11.0592MHz
+   3          {
+   4   1              unsigned char i, j, k;
+   5   1              _nop_();
+   6   1              _nop_();
+   7   1              i = 22;
+   8   1              j = 3;
+   9   1              k = 227;
+  10   1              do
+  11   1              {
+  12   2                      do
+  13   2                      {
+  14   3                              while (--k);
+  15   3                      } while (--j);
+  16   2              } while (--i);
+  17   1      }
+  18          void DelayMs(unsigned int x)   //0.14msÎó²î 0us
+  19          {
+  20   1              unsigned char i;
+  21   1              while(x--)
+  22   1              {
+  23   2                      for (i = 0; i<13; i++);
+  24   2                      
+  25   2              }
+  26   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     37    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
